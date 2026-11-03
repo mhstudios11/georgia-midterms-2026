@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Georgia Midterms 2026</title>
+<meta name="description" content="Unofficial results tracker for Georgia's November 3, 2026 general election: U.S. Senate, governor, statewide offices and all 14 U.S. House districts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Layout: a single column of race cards grouped by ballot section, results table for the House. */
+  :root {
+    --bg: #f6f7f9; --panel: #ffffff; --fg: #1b2230; --muted: #5d6676; --line: #dfe3ea; --track: #e8ebf0;
+    --dem: #2f64cc; --rep: #c93a30; --ind: #85764a; --warn: #9a6400;
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --body: "Public Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #11151c; --panel: #1a1f29; --fg: #e8ebf1; --muted: #9aa3b2; --line: #2c3340; --track: #2a303b;
+      --dem: #5b8cf0; --rep: #ec5f53; --ind: #b3a274; --warn: #e3a93c; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--body); }
+  .wrap { max-width: 72rem; margin-inline: auto; padding-block: 2rem 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid; gap: 2.25rem; }
+  header { display: grid; gap: .35rem; }
+  h1 { margin: 0; font: 400 clamp(1.9rem, 4vw, 2.6rem)/1.1 var(--display); text-wrap: balance; }
+  header p { margin: 0; color: var(--muted); max-width: 65ch; }
+  header b { color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stamp { font-size: .8rem; color: var(--muted); }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: .75rem; }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: .8rem 1rem; display: grid; gap: .2rem; }
+  .tile span { color: var(--muted); font-size: .8rem; }
+  .tile b { font: 400 2rem/1.1 var(--display); font-variant-numeric: tabular-nums; }
+  .tile.d { box-shadow: inset 0 3px 0 var(--dem); } .tile.r { box-shadow: inset 0 3px 0 var(--rep); }
+  section { display: grid; gap: .75rem; }
+  h2 { margin: 0; font-size: 1.1rem; font-weight: 600; }
+  section > p { margin: 0; color: var(--muted); font-size: .85rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: .75rem; }
+  .grid.top { grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 1.1rem; display: grid; gap: .55rem; align-content: start; min-width: 0; }
+  .card-h { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
+  .card-h h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+  .top .card-h h3 { font: 400 1.35rem/1.2 var(--display); }
+  .pill { font-size: .75rem; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+  .pill.counting { color: var(--warn); border-color: currentColor; }
+  .pill.called-D { color: #fff; background: var(--dem); border-color: var(--dem); }
+  .pill.called-R { color: #fff; background: var(--rep); border-color: var(--rep); }
+  .pill.called-I, .pill.called-L { color: #fff; background: var(--ind); border-color: var(--ind); }
+  .meta { font-size: .8rem; color: var(--muted); }
+  .cand { display: grid; grid-template-columns: 1.4rem 1fr auto; gap: 2px .5rem; align-items: center; font-variant-numeric: tabular-nums; }
+  .party { font-size: 11px; font-weight: 600; color: #fff; border-radius: 3px; text-align: center; line-height: 1.4rem; }
+  .party.D, .bar i.D, .dot.D { background: var(--dem); }
+  .party.R, .bar i.R, .dot.R { background: var(--rep); }
+  .party.I, .party.L, .bar i.I, .bar i.L, .dot.I, .dot.L { background: var(--ind); }
+  .name { min-width: 0; overflow-wrap: anywhere; } .name.win { font-weight: 600; }
+  .val { color: var(--muted); font-size: .8rem; text-align: right; }
+  .bar { grid-column: 2 / 4; height: 6px; border-radius: 3px; background: var(--track); overflow: hidden; }
+  .bar i { display: block; height: 100%; border-radius: 3px; transition: width .6s ease-out; }
+  .flag { font-size: .8rem; color: var(--warn); }
+  .tablebox { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: .55rem .8rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { font-size: .8rem; color: var(--muted); font-weight: 500; }
+  tr:last-child td { border-bottom: 0; }
+  .num { text-align: right; }
+  .dot { display: inline-block; width: .55rem; height: .55rem; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  footer { color: var(--muted); font-size: .8rem; max-width: 75ch; display: grid; gap: .3rem; }
+  footer p { margin: 0; }
+  .error { color: var(--warn); }
+  @media (max-width: 40rem) { .hide-sm { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Georgia midterms 2026</h1>
+    <p>General election, Tuesday, November 3. Polls close at 7 p.m. ET. <b id="t-called">—</b> of <b id="t-races">—</b> races on this page have been called.</p>
+    <div class="stamp" id="stamp">Loading results…</div>
+  </header>
+
+  <div class="tiles">
+    <div class="tile"><span>Races tracked</span><b id="tile-races">—</b></div>
+    <div class="tile d"><span>Called for Democrats</span><b id="tile-dem">—</b></div>
+    <div class="tile r"><span>Called for Republicans</span><b id="tile-rep">—</b></div>
+    <div class="tile"><span>Still counting or not yet reporting</span><b id="tile-open">—</b></div>
+  </div>
+
+  <section class="top">
+    <h2>Top of the ticket</h2>
+    <p>Bars show each candidate's share of votes counted so far. The share of expected vote reported sits under each race.</p>
+    <div class="grid top" id="grid-top"></div>
+  </section>
+
+  <section>
+    <h2>Statewide offices</h2>
+    <p>Constitutional officers and two Public Service Commission seats, all elected statewide.</p>
+    <div class="grid" id="grid-state"></div>
+  </section>
+
+  <section>
+    <h2>U.S. House</h2>
+    <p>All 14 Georgia districts. Margin is the leader's lead as a share of votes counted.</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr>
+          <th>District</th><th>Democrat</th><th>Republican</th><th class="hide-sm">Incumbent</th>
+          <th>Status</th><th class="num">Reporting</th><th>Leading</th><th class="num">Margin</th>
+        </tr></thead>
+        <tbody id="house-body"></tbody>
+      </table>
+    </div>
+    <p id="house-others"></p>
+  </section>
+
+  <footer>
+    <p>Results are unofficial until the Georgia Secretary of State certifies them. Vote counts are copied from the state's election-night results and news race calls, so this page can trail the live count. It checks for new numbers every few minutes.</p>
+    <p>Candidate lists were compiled on November 3 from Georgia news voter guides. Races flagged in amber have a nominee that only one source confirmed.</p>
+  </footer>
+</div>
+
+<script>
+  const fmtN = new Intl.NumberFormat('en-US');
+  const fmtP = (v) => (v * 100).toFixed(1) + '%';
+  const fmtR = (v) => v == null ? '—' : Math.round(v * 100) + '%';
+  const $ = (id) => document.getElementById(id);
+  const mk = (tag, cls, text) => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  };
+
+  function summarize(results) {
+    const byRace = new Map();
+    for (const r of results) {
+      if (!byRace.has(r.race)) byRace.set(r.race, []);
+      byRace.get(r.race).push(r);
+    }
+    return [...byRace.values()].map((c) => {
+      const n = (x) => Number(x.votes) || 0;
+      const total = c.reduce((a, x) => a + n(x), 0);
+      const ranked = [...c].sort((a, b) => n(b) - n(a));
+      const pick = (p) => c.find((x) => x.party === p);
+      const inc = c.find((x) => x.incumbent === true);
+      const won = c.find((x) => x.called === true);
+      return {
+        race: c[0].race, order: Number(c[0].order), group: c[0].group, office: c[0].office, cands: c,
+        dem: pick('D') ? pick('D').candidate : '', rep: pick('R') ? pick('R').candidate : '',
+        others: c.filter((x) => x.party !== 'D' && x.party !== 'R').map((x) => x.candidate + ' (' + x.party + ')').join(', '),
+        incumbent: inc ? inc.candidate + ' (' + inc.party + ')' : 'Open seat',
+        total, reporting: c[0].reporting == null ? null : Number(c[0].reporting),
+        status: won ? 'Called' : total > 0 ? 'Counting' : 'Not yet reporting',
+        leader: total > 0 ? ranked[0].candidate : '', leader_party: total > 0 ? ranked[0].party : '',
+        margin: total > 0 && ranked.length > 1 ? (n(ranked[0]) - n(ranked[1])) / total : null,
+        winner: won ? won.candidate : '', winner_party: won ? won.party : '', note: c[0].note || ''
+      };
+    }).sort((a, b) => a.order - b.order);
+  }
+
+  function raceCard(s) {
+    const card = mk('article', 'card');
+    const h = mk('div', 'card-h');
+    h.append(mk('h3', null, s.office));
+    const pillCls = s.winner ? 'called-' + s.winner_party : s.status === 'Counting' ? 'counting' : '';
+    h.append(mk('span', 'pill ' + pillCls, s.winner ? 'Called: ' + s.winner : s.status));
+    card.append(h, mk('div', 'meta', 'Incumbent: ' + s.incumbent));
+    for (const c of s.cands) {
+      const v = Number(c.votes) || 0;
+      const share = s.total > 0 ? v / s.total : 0;
+      const row = mk('div', 'cand');
+      row.append(mk('span', 'party ' + c.party, c.party));
+      row.append(mk('span', 'name' + (s.winner === c.candidate ? ' win' : ''), c.candidate));
+      row.append(mk('span', 'val', s.total > 0 ? fmtP(share) + ' · ' + fmtN.format(v) : '—'));
+      const bar = mk('div', 'bar'), fill = mk('i', c.party);
+      fill.style.width = (share * 100).toFixed(2) + '%';
+      bar.append(fill);
+      row.append(bar);
+      card.append(row);
+    }
+    card.append(mk('div', 'meta', s.total > 0
+      ? fmtN.format(s.total) + ' votes counted · ' + fmtR(s.reporting) + ' of expected vote reported'
+      : 'No votes reported yet'));
+    if (s.note) card.append(mk('div', 'flag', s.note));
+    return card;
+  }
+
+  function render(results, stampText) {
+    const sum = summarize(results);
+    const called = sum.filter((r) => r.winner);
+    $('t-called').textContent = called.length;
+    $('t-races').textContent = $('tile-races').textContent = sum.length;
+    $('tile-dem').textContent = called.filter((r) => r.winner_party === 'D').length;
+    $('tile-rep').textContent = called.filter((r) => r.winner_party === 'R').length;
+    $('tile-open').textContent = sum.length - called.length;
+    $('grid-top').replaceChildren(...sum.filter((x) => x.group === 'Top of ticket').map(raceCard));
+    $('grid-state').replaceChildren(...sum.filter((x) => x.group === 'Statewide').map(raceCard));
+    const house = sum.filter((x) => x.group === 'U.S. House');
+    $('house-body').replaceChildren(...house.map((x) => {
+      const tr = document.createElement('tr');
+      const td = (text, cls) => { const c = mk('td', cls || null, text); tr.append(c); return c; };
+      const first = td(x.race);
+      if (x.note) { first.append(mk('span', 'flag', ' *')); tr.title = x.note; }
+      td(x.dem); td(x.rep); td(x.incumbent, 'hide-sm');
+      td(x.winner ? 'Called: ' + x.winner : x.status);
+      td(fmtR(x.reporting), 'num');
+      const lead = td(x.leader || '—');
+      if (x.leader) lead.prepend(mk('span', 'dot ' + x.leader_party));
+      td(x.margin == null ? '—' : fmtP(x.margin), 'num');
+      return tr;
+    }));
+    $('house-others').textContent = house.filter((x) => x.others || x.note)
+      .map((x) => x.race + ': ' + [x.others ? 'also on the ballot, ' + x.others : '', x.note].filter(Boolean).join('. '))
+      .join(' · ');
+    $('stamp').textContent = stampText;
+  }
+
+  async function load() {
+    try {
+      const res = await fetch('results.json?t=' + Date.now(), {cache: 'no-store'});
+      if (!res.ok) throw new Error(res.status);
+      const modified = res.headers.get('last-modified');
+      const when = modified ? new Date(modified) : new Date();
+      render(await res.json(), 'Results file updated ' + when.toLocaleString('en-US', {
+        timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit', month: 'short', day: 'numeric'
+      }) + ' ET');
+    } catch (e) {
+      $('stamp').textContent = "Couldn't load the latest results. The page will try again in a few minutes.";
+      $('stamp').className = 'stamp error';
+    }
+  }
+  load();
+  setInterval(load, 3 * 60 * 1000);
+</script>
+</body>
+</html>
