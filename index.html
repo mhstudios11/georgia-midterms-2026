@@ -332,11 +332,13 @@
     try {
       const res = await fetch('results.json?t=' + Date.now(), {cache: 'no-store'});
       if (!res.ok) throw new Error(res.status);
-      const modified = res.headers.get('last-modified');
-      const when = modified ? new Date(modified) : new Date();
-      render(await res.json(), 'Updated ' + when.toLocaleString('en-US', {
+      const data = await res.json();
+      // `updated` is when the vote counts last changed; it stays empty until the first results come in.
+      const rows = Array.isArray(data) ? data : data.rows;
+      const when = data.updated ? new Date(data.updated) : null;
+      render(rows, when ? 'Updated ' + when.toLocaleString('en-US', {
         timeZone: 'America/New_York', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
-      }) + ' ET');
+      }) + ' ET' : 'Awaiting first results');
     } catch (e) {
       $('stamp').textContent = "Couldn't load the latest results. Trying again shortly.";
       $('stamp').className = 'updated error';
