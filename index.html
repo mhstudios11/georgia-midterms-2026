@@ -25,6 +25,7 @@
   .wrap { max-width: calc(1148px + 128px); margin-inline: auto; padding-block: 42px 64px;
     padding-left: max(64px, env(safe-area-inset-left, 0px)); padding-right: max(64px, env(safe-area-inset-right, 0px));
     display: grid; gap: 56px; }
+  .wrap > *, section > * { min-width: 0; }
   @media (max-width: 720px) {
     .wrap { padding-block: 24px 40px; gap: 40px;
       padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -35,25 +36,37 @@
   .peach { position: relative; width: 40px; height: 41px; }
   .peach-inner { position: absolute; inset: 11.53% 12.67%; }
   .peach-img { position: absolute; inset: -19.44% -93.76% -139.47% -93.76%; }
-  .peach-img img { display: block; max-width: none; width: 100%; height: 100%; }
-  h1 { grid-column: 1 / -1; margin: 16px 0 0; font-size: 32px; font-weight: 600; text-wrap: balance; }
-  .updated { grid-column: 2; grid-row: 1; margin-top: 22px; background: var(--chip); color: var(--muted);
-    font-size: 17px; line-height: 30px; padding: 4px 12px; border-radius: 8px; white-space: nowrap; }
+  .peach-img img { display: block; max-width: none; width: 100%; height: 100%;
+    filter: drop-shadow(0 2px 2px rgba(12, 12, 13, .08)) drop-shadow(0 8px 10px rgba(12, 12, 13, .1)); }
+  .title { grid-column: 1 / -1; display: grid; gap: 8px; margin-top: 16px; }
+  h1 { margin: 0; font-size: 32px; font-weight: 600; text-wrap: balance; }
+  .subtitle { margin: 0; color: var(--muted); font-size: 18px; line-height: 30px; max-width: 818px; }
+  .subtitle b { color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .updated { grid-column: 2; grid-row: 1; align-self: center; background: var(--chip); color: var(--muted);
+    font-size: 14px; line-height: 20px; padding: 4px 10px; border-radius: 8px; white-space: nowrap; }
   .updated.error { color: var(--warn); white-space: normal; }
   @media (max-width: 720px) {
-    h1 { font-size: 28px; margin-top: 8px; }
-    .updated { margin-top: 6px; font-size: 14px; line-height: 22px; }
+    .title { margin-top: 8px; }
+    h1 { font-size: 28px; }
+    .subtitle { font-size: 16px; line-height: 24px; }
+    .updated { font-size: 12px; line-height: 18px; padding: 3px 8px; }
   }
 
   /* Summary tiles */
   .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
   @media (max-width: 1000px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; filter: var(--shadow);
-    padding: 16px 16px 24px; display: grid; gap: 24px; align-content: start; min-width: 0; }
-  .tile-h { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-  .tile-h span { color: var(--muted); font-size: 16px; line-height: 30px; }
+    padding: 16px 16px 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-width: 0; }
+  .tile-h { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .tile-label { color: var(--muted); font-size: 16px; line-height: 30px; }
+  .tile-h .badge { margin-top: 3px; }
   .tile b { font-size: 32px; line-height: 30px; font-weight: 500; font-variant-numeric: tabular-nums; }
-  @media (max-width: 480px) { .tile-h span { font-size: 14px; line-height: 20px; } .tile { gap: 16px; } }
+  @media (max-width: 480px) {
+    .tile { gap: 16px; padding: 12px 12px 16px; }
+    .tile-label { font-size: 14px; line-height: 20px; }
+    .tile-h .badge { margin-top: -2px; }
+    .tile b { font-size: 28px; }
+  }
 
   /* Party badges */
   .badge { display: inline-flex; align-items: center; justify-content: center; flex: none; color: #fff; font-weight: 600; }
@@ -70,11 +83,11 @@
   @media (max-width: 720px) { .sec-desc { font-size: 16px; line-height: 24px; } }
 
   /* Race cards */
-  .grid { display: grid; gap: 16px; align-items: start; }
+  .grid { display: grid; gap: 16px; grid-auto-rows: 1fr; }
   .grid.top { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
   .grid.state { grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
   .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; filter: var(--shadow);
-    padding: 16px 16px 32px; display: grid; gap: 32px; align-content: start; min-width: 0; }
+    padding: 16px 16px 32px; display: flex; flex-direction: column; gap: 32px; min-width: 0; }
   .card-head { display: grid; gap: 4px; }
   .top .card-head { gap: 8px; }
   .card-title { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
@@ -96,7 +109,13 @@
   .bar { height: 6px; border-radius: 10px; background: var(--track); overflow: hidden; }
   .bar i { display: block; height: 100%; border-radius: 10px; transition: width .6s ease-out; }
   .bar i.D { background: var(--dem); } .bar i.R { background: var(--rep); } .bar i.I, .bar i.L { background: var(--ind); }
-  .card-foot { display: grid; gap: 4px; margin-top: -16px; }
+  .card-foot { display: grid; gap: 4px; margin-top: auto; }
+  @media (max-width: 480px) {
+    .card { padding: 16px 16px 24px; gap: 24px; }
+    .cands { gap: 24px; }
+    .cand { gap: 12px; }
+    .cand-name { font-size: 16px; }
+  }
   .flag { color: var(--warn); font-size: 12px; }
 
   /* House table */
@@ -106,10 +125,25 @@
   th, td { text-align: left; padding: 16px 12px 16px 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); white-space: nowrap; }
   th:last-child, td:last-child { border-right: 0; }
   tbody tr:last-child td { border-bottom: 0; }
-  th { padding-block: 12px; color: var(--muted-2); font-weight: 500; }
+  th { padding-block: 12px; color: var(--muted-2); font-weight: 500; background: #f6f7f9; }
   .th-party { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
   td .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
   td .dot.D { background: var(--dem); } td .dot.R { background: var(--rep); } td .dot.I, td .dot.L { background: var(--ind); }
+  /* Phones: each district becomes its own block of label/value rows. */
+  @media (max-width: 720px) {
+    .tablebox { overflow: visible; background: none; border: 0; box-shadow: none; }
+    table { min-width: 0; }
+    thead { display: none; }
+    tbody { display: grid; gap: 12px; }
+    tbody tr { display: block; background: var(--panel); border: 1px solid var(--line); border-radius: 16px;
+      filter: var(--shadow); overflow: hidden; }
+    td { display: flex; justify-content: space-between; gap: 16px; padding: 10px 16px; border-right: 0;
+      white-space: normal; text-align: right; }
+    td::before { content: attr(data-label); color: var(--muted-2); text-align: left; flex: none; }
+    td:first-child { background: #f6f7f9; font-size: 16px; font-weight: 600; }
+    td:first-child::before { content: none; }
+    tbody tr td:last-child { border-bottom: 0; }
+  }
   .house-notes { margin: 12px 0 0; color: var(--muted); font-size: 12px; line-height: 18px; }
 
   footer { color: var(--muted); font-size: 12px; line-height: 18px; max-width: 818px; display: grid; gap: 4px; }
@@ -124,30 +158,34 @@
       <div class="peach-inner"><div class="peach-img"><img src="peach.svg" alt=""></div></div>
     </div>
     <div class="updated" id="stamp">Loading results…</div>
-    <h1>Georgia Midterms 2026</h1>
+    <div class="title">
+      <h1>Georgia Midterms 2026</h1>
+      <p class="subtitle">General election, Tuesday, November 3. Polls close at 7 p.m. ET. <b id="t-called">—</b> of <b id="t-races">—</b> races on this page have been called.</p>
+    </div>
   </header>
 
   <div class="tiles">
     <div class="tile">
-      <div class="tile-h"><span>Races Tracked</span></div>
+      <div class="tile-h"><span class="tile-label">Races Tracked</span></div>
       <b id="tile-races">—</b>
     </div>
     <div class="tile">
-      <div class="tile-h"><span>Called for Democrats</span><span class="badge md D" aria-hidden="true">D</span></div>
+      <div class="tile-h"><span class="tile-label">Called for Democrats</span><span class="badge md D" aria-hidden="true">D</span></div>
       <b id="tile-dem">—</b>
     </div>
     <div class="tile">
-      <div class="tile-h"><span>Called for Republicans</span><span class="badge md R" aria-hidden="true">R</span></div>
+      <div class="tile-h"><span class="tile-label">Called for Republicans</span><span class="badge md R" aria-hidden="true">R</span></div>
       <b id="tile-rep">—</b>
     </div>
     <div class="tile">
-      <div class="tile-h"><span>Still Counting / Not Yet Reporting</span></div>
+      <div class="tile-h"><span class="tile-label">Still Counting / Not Yet Reporting</span></div>
       <b id="tile-open">—</b>
     </div>
   </div>
 
   <section class="top">
     <h2>Top of the ticket</h2>
+    <p class="sec-desc">Bars show each candidate's share of votes counted so far. The share of expected vote reported sits under each race.</p>
     <div class="grid top sec-body" id="grid-top"></div>
   </section>
 
@@ -260,6 +298,8 @@
   function render(results, stampText) {
     const sum = summarize(results);
     const called = sum.filter((r) => r.winner);
+    $('t-called').textContent = called.length;
+    $('t-races').textContent = sum.length;
     $('tile-races').textContent = sum.length;
     $('tile-dem').textContent = called.filter((r) => r.winner_party === 'D').length;
     $('tile-rep').textContent = called.filter((r) => r.winner_party === 'R').length;
@@ -269,15 +309,16 @@
     const house = sum.filter((x) => x.group === 'U.S. House');
     $('house-body').replaceChildren(...house.map((x) => {
       const tr = document.createElement('tr');
-      const td = (text) => { const c = mk('td', null, text); tr.append(c); return c; };
-      const first = td(x.race);
+      const td = (label, text) => { const c = mk('td', null, text); c.dataset.label = label; tr.append(c); return c; };
+      const first = td('District', x.race);
       if (x.note) { first.append(mk('span', 'flag', ' *')); tr.title = x.note; }
-      td(x.dem); td(x.rep); td(x.incumbent);
-      td(x.winner ? 'Called: ' + x.winner : x.status);
-      td(fmtR(x.reporting));
-      const lead = td(x.leader || '--');
+      td('Democrat', x.dem); td('Republican', x.rep); td('Incumbent', x.incumbent);
+      td('Status', x.winner ? 'Called: ' + x.winner : x.status);
+      td('Reporting', fmtR(x.reporting));
+      const lead = mk('span', null, x.leader || '--');
       if (x.leader) lead.prepend(mk('span', 'dot ' + x.leader_party));
-      td(x.margin == null ? '--' : fmtP(x.margin));
+      td('Leading', '').append(lead);
+      td('Margin', x.margin == null ? '--' : fmtP(x.margin));
       return tr;
     }));
     $('house-others').textContent = house.filter((x) => x.others || x.note)
