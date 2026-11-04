@@ -110,6 +110,12 @@
   .bar i { display: block; height: 100%; border-radius: 10px; transition: width .6s ease-out; }
   .bar i.D { background: var(--dem); } .bar i.R { background: var(--rep); } .bar i.I, .bar i.L { background: var(--ind); }
   .card-foot { display: grid; gap: 4px; margin-top: auto; }
+  /* "History" strip from the Election History Card frame: full-bleed footer inside the card. */
+  .history { margin: auto -17px -33px; padding: 16px; background: #f6f7f9; border-top: 1px solid var(--line);
+    border-radius: 0 0 16px 16px; font-size: 16px; line-height: 22px; }
+  .card-foot + .history { margin-top: 0; }
+  .history b { font-weight: 600; }
+  @media (max-width: 480px) { .history { margin-bottom: -25px; font-size: 15px; } }
   @media (max-width: 480px) {
     .card { padding: 16px 16px 24px; gap: 24px; }
     .cands { gap: 24px; }
@@ -254,7 +260,8 @@
         status: won ? 'Called' : total > 0 ? 'Counting' : 'Not yet reporting',
         leader: total > 0 ? ranked[0].candidate : '', leader_party: total > 0 ? ranked[0].party : '',
         margin: total > 0 && ranked.length > 1 ? (n(ranked[0]) - n(ranked[1])) / total : null,
-        winner: won ? won.candidate : '', winner_party: won ? won.party : '', note: c[0].note || ''
+        winner: won ? won.candidate : '', winner_party: won ? won.party : '', note: c[0].note || '',
+        badge: c[0].badge || '', history: c[0].history || ''
       };
     }).sort((a, b) => a.order - b.order);
   }
@@ -263,7 +270,7 @@
     const card = mk('article', 'card');
     const head = mk('div', 'card-head');
     const title = mk('div', 'card-title');
-    title.append(mk('h3', null, s.office));
+    title.append(mk('h3', null, s.badge ? s.office + ' ' + s.badge : s.office));
     const pillCls = s.winner ? 'called-' + s.winner_party : s.status === 'Counting' ? 'counting' : '';
     title.append(mk('span', 'pill ' + pillCls, s.winner ? 'Called: ' + s.winner : s.status));
     head.append(title, mk('div', 'meta', 'Incumbent: ' + s.incumbent));
@@ -288,9 +295,16 @@
     card.append(list);
     if (s.total > 0 || s.note) {
       const foot = mk('div', 'card-foot');
-      if (s.total > 0) foot.append(mk('div', 'meta', fmtN.format(s.total) + ' votes counted · ' + fmtR(s.reporting) + ' of expected vote reported'));
+      if (s.total > 0) foot.append(mk('div', 'meta', fmtN.format(s.total) + ' votes counted' +
+        (s.reporting == null ? '' : ' · ' + fmtR(s.reporting) + ' of expected vote reported')));
       if (s.note) foot.append(mk('div', 'flag', s.note));
       card.append(foot);
+    }
+    if (s.history) {
+      // **text** in the data is shown bold; everything is inserted as text, never HTML.
+      const strip = mk('p', 'history');
+      s.history.split('**').forEach((part, i) => strip.append(i % 2 ? mk('b', null, part) : part));
+      card.append(strip);
     }
     return card;
   }
