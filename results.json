@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T17:29:48Z",
+ "updated": "2026-11-04T17:40:08Z",
  "rows": [
   {
    "order": 1,
@@ -145,7 +145,7 @@
    "incumbent": false,
    "votes": 2238991,
    "reporting": null,
-   "called": false,
+   "called": true,
    "note": ""
   },
   {
@@ -171,7 +171,7 @@
    "incumbent": false,
    "votes": 2255519,
    "reporting": null,
-   "called": false,
+   "called": true,
    "note": ""
   },
   {
@@ -197,7 +197,7 @@
    "incumbent": false,
    "votes": 2266525,
    "reporting": null,
-   "called": false,
+   "called": true,
    "note": ""
   },
   {
@@ -223,7 +223,7 @@
    "incumbent": false,
    "votes": 2272631,
    "reporting": null,
-   "called": false,
+   "called": true,
    "note": ""
   },
   {
@@ -249,7 +249,7 @@
    "incumbent": true,
    "votes": 2335368,
    "reporting": null,
-   "called": false,
+   "called": true,
    "note": ""
   },
   {
@@ -275,7 +275,7 @@
    "incumbent": false,
    "votes": 2294542,
    "reporting": null,
-   "called": false,
+   "called": true,
    "note": ""
   },
   {
