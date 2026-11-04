@@ -79,6 +79,9 @@
   section { display: grid; gap: 8px; }
   h2 { margin: 0; font-size: 21px; font-weight: 600; }
   .sec-desc { margin: 0; color: var(--muted); font-size: 18px; line-height: 30px; max-width: 818px; }
+  .sec-desc b { color: var(--fg); font-weight: 600; }
+  .sec-key { margin: 0; color: var(--muted); font-size: 14px; line-height: 22px; max-width: 818px; }
+  .sec-key i { font-style: italic; }
   .sec-body { margin-top: 16px; }
   @media (max-width: 720px) { .sec-desc { font-size: 16px; line-height: 24px; } }
 
@@ -192,19 +195,22 @@
 
   <section class="top">
     <h2>Top of the ticket</h2>
-    <p class="sec-desc">Bars show each candidate's share of votes counted so far. The share of expected vote reported sits under each race.</p>
+    <p class="sec-desc">Georgia's two biggest races. Georgia's <b>U.S. senators</b> are 2 of the 100 votes on every federal law, and they confirm Supreme Court justices and cabinet members; each serves a six-year term. The <b>governor</b> runs the state for four years, proposing Georgia's budget and signing or vetoing every bill the legislature passes.</p>
+    <p class="sec-key">Bars show each candidate's share of votes counted so far.</p>
     <div class="grid top sec-body" id="grid-top"></div>
   </section>
 
   <section>
     <h2>Statewide Offices</h2>
-    <p class="sec-desc">Constitutional officers and two Public Service Commission seats, all elected statewide.</p>
+    <p class="sec-desc">The officials who run key parts of state government, each elected by the whole state. The <b>lieutenant governor</b> presides over the state Senate, the <b>secretary of state</b> runs elections, and the <b>attorney general</b> is Georgia's top lawyer. The commissioners lead <b>agriculture</b>, <b>insurance</b> and <b>labor</b>, the <b>school superintendent</b> oversees public schools, and the <b>Public Service Commission</b> sets the rates you pay for electricity and gas.</p>
+    <p class="sec-key">Most serve four-year terms. Public Service Commissioners serve six, and each must live in the district they represent.</p>
     <div class="grid state sec-body" id="grid-state"></div>
   </section>
 
   <section>
     <h2>U.S. House</h2>
-    <p class="sec-desc">All 14 Georgia districts. Margin is the leader's lead as a share of votes counted.</p>
+    <p class="sec-desc"><b>Georgia sends 14 representatives to the U.S. House</b>, the half of Congress that writes the federal budget and starts every tax bill. Each member serves a two-year term, so all 14 seats are on the ballot every even year. Together they're 14 of the 435 votes that decide which party controls the House.</p>
+    <p class="sec-key"><i>Margin</i> shows how far ahead the leading candidate is, as a share of all votes counted so far.</p>
     <div class="sec-body">
       <div class="tablebox">
         <table>
