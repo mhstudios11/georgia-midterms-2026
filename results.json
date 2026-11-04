@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T02:46:53Z",
+ "updated": "2026-11-04T03:17:39Z",
  "rows": [
   {
    "order": 1,
@@ -9,7 +9,7 @@
    "candidate": "Jon Ossoff",
    "party": "D",
    "incumbent": true,
-   "votes": 2037903,
+   "votes": 2182677,
    "reporting": null,
    "called": true,
    "note": ""
@@ -22,7 +22,7 @@
    "candidate": "Mike Collins",
    "party": "R",
    "incumbent": false,
-   "votes": 1395505,
+   "votes": 1518176,
    "reporting": null,
    "called": false,
    "note": ""
@@ -35,7 +35,7 @@
    "candidate": "Keisha Lance Bottoms",
    "party": "D",
    "incumbent": false,
-   "votes": 1887538,
+   "votes": 2017717,
    "reporting": null,
    "called": true,
    "note": "",
@@ -50,7 +50,7 @@
    "candidate": "Rick Jackson",
    "party": "R",
    "incumbent": false,
-   "votes": 1547615,
+   "votes": 1685015,
    "reporting": null,
    "called": false,
    "note": "",
@@ -65,7 +65,7 @@
    "candidate": "Josh McLaurin",
    "party": "D",
    "incumbent": false,
-   "votes": 1933001,
+   "votes": 2067439,
    "reporting": null,
    "called": false,
    "note": ""
@@ -78,7 +78,7 @@
    "candidate": "Greg Dolezal",
    "party": "R",
    "incumbent": false,
-   "votes": 1488863,
+   "votes": 1620778,
    "reporting": null,
    "called": false,
    "note": ""
@@ -91,7 +91,7 @@
    "candidate": "Penny Brown Reynolds",
    "party": "D",
    "incumbent": false,
-   "votes": 1925928,
+   "votes": 2059849,
    "reporting": null,
    "called": false,
    "note": ""
@@ -104,7 +104,7 @@
    "candidate": "Tim Fleming",
    "party": "R",
    "incumbent": false,
-   "votes": 1500138,
+   "votes": 1632932,
    "reporting": null,
    "called": false,
    "note": ""
@@ -117,7 +117,7 @@
    "candidate": "Tanya Miller",
    "party": "D",
    "incumbent": false,
-   "votes": 1924828,
+   "votes": 2058492,
    "reporting": null,
    "called": false,
    "note": ""
@@ -130,7 +130,7 @@
    "candidate": "Brian Strickland",
    "party": "R",
    "incumbent": false,
-   "votes": 1507581,
+   "votes": 1641017,
    "reporting": null,
    "called": false,
    "note": ""
@@ -143,7 +143,7 @@
    "candidate": "Katherine Juhan-Arnold",
    "party": "D",
    "incumbent": false,
-   "votes": 1862257,
+   "votes": 1990923,
    "reporting": null,
    "called": false,
    "note": ""
@@ -156,7 +156,7 @@
    "candidate": "Tyler Harper",
    "party": "R",
    "incumbent": true,
-   "votes": 1560096,
+   "votes": 1697667,
    "reporting": null,
    "called": false,
    "note": ""
@@ -169,7 +169,7 @@
    "candidate": "Keisha Waites",
    "party": "D",
    "incumbent": false,
-   "votes": 1874566,
+   "votes": 2004779,
    "reporting": null,
    "called": false,
    "note": ""
@@ -182,7 +182,7 @@
    "candidate": "John King",
    "party": "R",
    "incumbent": true,
-   "votes": 1544071,
+   "votes": 1679785,
    "reporting": null,
    "called": false,
    "note": ""
@@ -195,7 +195,7 @@
    "candidate": "Nikki Porcher",
    "party": "D",
    "incumbent": false,
-   "votes": 1884967,
+   "votes": 2015287,
    "reporting": null,
    "called": false,
    "note": ""
@@ -208,7 +208,7 @@
    "candidate": "Bárbara Rivera Holmes",
    "party": "R",
    "incumbent": true,
-   "votes": 1529359,
+   "votes": 1664512,
    "reporting": null,
    "called": false,
    "note": ""
@@ -221,7 +221,7 @@
    "candidate": "Lydia Powell",
    "party": "D",
    "incumbent": false,
-   "votes": 1888543,
+   "votes": 2019792,
    "reporting": null,
    "called": false,
    "note": ""
@@ -234,7 +234,7 @@
    "candidate": "Richard Woods",
    "party": "R",
    "incumbent": true,
-   "votes": 1535260,
+   "votes": 1670504,
    "reporting": null,
    "called": false,
    "note": ""
@@ -247,7 +247,7 @@
    "candidate": "Peter Hubbard",
    "party": "D",
    "incumbent": true,
-   "votes": 1937892,
+   "votes": 2073351,
    "reporting": null,
    "called": false,
    "note": ""
@@ -260,7 +260,7 @@
    "candidate": "Fitz Johnson",
    "party": "R",
    "incumbent": false,
-   "votes": 1470360,
+   "votes": 1600019,
    "reporting": null,
    "called": false,
    "note": ""
@@ -273,7 +273,7 @@
    "candidate": "Shelia Edwards",
    "party": "D",
    "incumbent": false,
-   "votes": 1907152,
+   "votes": 2039299,
    "reporting": null,
    "called": false,
    "note": ""
@@ -286,7 +286,7 @@
    "candidate": "Joshua Tolbert",
    "party": "R",
    "incumbent": false,
-   "votes": 1506568,
+   "votes": 1639810,
    "reporting": null,
    "called": false,
    "note": ""
@@ -299,7 +299,7 @@
    "candidate": "Amanda Hollowell",
    "party": "D",
    "incumbent": false,
-   "votes": 109643,
+   "votes": 126407,
    "reporting": null,
    "called": false,
    "note": ""
@@ -312,7 +312,7 @@
    "candidate": "Jim Kingston",
    "party": "R",
    "incumbent": false,
-   "votes": 109492,
+   "votes": 126957,
    "reporting": null,
    "called": false,
    "note": ""
@@ -325,7 +325,7 @@
    "candidate": "Sanford Bishop",
    "party": "D",
    "incumbent": true,
-   "votes": 101691,
+   "votes": 124080,
    "reporting": null,
    "called": false,
    "note": ""
@@ -338,7 +338,7 @@
    "candidate": "Matt Day",
    "party": "R",
    "incumbent": false,
-   "votes": 71852,
+   "votes": 84821,
    "reporting": null,
    "called": false,
    "note": ""
@@ -351,7 +351,7 @@
    "candidate": "Maura Keller",
    "party": "D",
    "incumbent": false,
-   "votes": 106694,
+   "votes": 112695,
    "reporting": null,
    "called": false,
    "note": ""
@@ -364,7 +364,7 @@
    "candidate": "Brian Jack",
    "party": "R",
    "incumbent": true,
-   "votes": 131551,
+   "votes": 144116,
    "reporting": null,
    "called": false,
    "note": ""
@@ -377,7 +377,7 @@
    "candidate": "Hank Johnson",
    "party": "D",
    "incumbent": true,
-   "votes": 177425,
+   "votes": 179333,
    "reporting": null,
    "called": false,
    "note": ""
@@ -390,7 +390,7 @@
    "candidate": "James Duffie",
    "party": "R",
    "incumbent": false,
-   "votes": 31913,
+   "votes": 32885,
    "reporting": null,
    "called": false,
    "note": ""
@@ -403,7 +403,7 @@
    "candidate": "Nikema Williams",
    "party": "D",
    "incumbent": true,
-   "votes": 222393,
+   "votes": 227944,
    "reporting": null,
    "called": false,
    "note": ""
@@ -416,7 +416,7 @@
    "candidate": "John Salvesen",
    "party": "R",
    "incumbent": false,
-   "votes": 21695,
+   "votes": 22363,
    "reporting": null,
    "called": false,
    "note": ""
@@ -429,7 +429,7 @@
    "candidate": "Lucy McBath",
    "party": "D",
    "incumbent": true,
-   "votes": 215707,
+   "votes": 234642,
    "reporting": null,
    "called": false,
    "note": ""
@@ -442,7 +442,7 @@
    "candidate": "Kevin Martin",
    "party": "R",
    "incumbent": false,
-   "votes": 45980,
+   "votes": 50560,
    "reporting": null,
    "called": false,
    "note": ""
@@ -455,7 +455,7 @@
    "candidate": "Tony Kozycki",
    "party": "D",
    "incumbent": false,
-   "votes": 119597,
+   "votes": 122675,
    "reporting": null,
    "called": false,
    "note": ""
@@ -468,7 +468,7 @@
    "candidate": "Rich McCormick",
    "party": "R",
    "incumbent": true,
-   "votes": 150598,
+   "votes": 155939,
    "reporting": null,
    "called": false,
    "note": ""
@@ -481,7 +481,7 @@
    "candidate": "Kelly Esti",
    "party": "D",
    "incumbent": false,
-   "votes": 94205,
+   "votes": 98478,
    "reporting": null,
    "called": false,
    "note": ""
@@ -494,7 +494,7 @@
    "candidate": "Austin Scott",
    "party": "R",
    "incumbent": true,
-   "votes": 142294,
+   "votes": 148716,
    "reporting": null,
    "called": false,
    "note": ""
@@ -507,7 +507,7 @@
    "candidate": "Caitlyn Gegen",
    "party": "D",
    "incumbent": false,
-   "votes": 102153,
+   "votes": 108577,
    "reporting": null,
    "called": false,
    "note": ""
@@ -520,7 +520,7 @@
    "candidate": "Andrew Clyde",
    "party": "R",
    "incumbent": true,
-   "votes": 153152,
+   "votes": 165254,
    "reporting": null,
    "called": false,
    "note": ""
@@ -533,7 +533,7 @@
    "candidate": "Pamela DeLancy",
    "party": "D",
    "incumbent": false,
-   "votes": 135551,
+   "votes": 139742,
    "reporting": null,
    "called": false,
    "note": ""
@@ -546,7 +546,7 @@
    "candidate": "Houston Gaines",
    "party": "R",
    "incumbent": false,
-   "votes": 158428,
+   "votes": 166510,
    "reporting": null,
    "called": false,
    "note": ""
@@ -559,7 +559,7 @@
    "candidate": "Chris Harden",
    "party": "D",
    "incumbent": false,
-   "votes": 124019,
+   "votes": 136485,
    "reporting": null,
    "called": false,
    "note": ""
@@ -572,7 +572,7 @@
    "candidate": "John Cowan",
    "party": "R",
    "incumbent": false,
-   "votes": 144969,
+   "votes": 160856,
    "reporting": null,
    "called": false,
    "note": ""
@@ -585,7 +585,7 @@
    "candidate": "Ceretta Smith",
    "party": "D",
    "incumbent": false,
-   "votes": 113957,
+   "votes": 127172,
    "reporting": null,
    "called": false,
    "note": ""
@@ -598,7 +598,7 @@
    "candidate": "Rick Allen",
    "party": "R",
    "incumbent": true,
-   "votes": 124339,
+   "votes": 136166,
    "reporting": null,
    "called": false,
    "note": ""
@@ -611,7 +611,7 @@
    "candidate": "Jasmine Clark",
    "party": "D",
    "incumbent": false,
-   "votes": 214995,
+   "votes": 224125,
    "reporting": null,
    "called": false,
    "note": ""
@@ -624,7 +624,7 @@
    "candidate": "Jonathan Chavez",
    "party": "R",
    "incumbent": false,
-   "votes": 49819,
+   "votes": 54042,
    "reporting": null,
    "called": false,
    "note": ""
@@ -637,7 +637,7 @@
    "candidate": "Shawn Harris",
    "party": "D",
    "incumbent": false,
-   "votes": 103729,
+   "votes": 115391,
    "reporting": null,
    "called": false,
    "note": ""
@@ -650,7 +650,7 @@
    "candidate": "Clay Fuller",
    "party": "R",
    "incumbent": true,
-   "votes": 147786,
+   "votes": 165576,
    "reporting": null,
    "called": false,
    "note": ""
