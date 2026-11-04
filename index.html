@@ -111,11 +111,12 @@
   .bar i.D { background: var(--dem); } .bar i.R { background: var(--rep); } .bar i.I, .bar i.L { background: var(--ind); }
   .card-foot { display: grid; gap: 4px; margin-top: auto; }
   /* "History" strip from the Election History Card frame: full-bleed footer inside the card. */
-  .history { margin: auto -17px -33px; padding: 16px; background: #f6f7f9; border-top: 1px solid var(--line);
-    border-radius: 0 0 16px 16px; font-size: 16px; line-height: 22px; }
+  /* Pulled out by exactly the card's padding, so the card's 1px border stays visible around it. */
+  .history { margin: auto -16px -32px; padding: 16px; background: #f6f7f9; border-top: 1px solid var(--line);
+    border-radius: 0 0 15px 15px; font-size: 16px; line-height: 22px; }
   .card-foot + .history { margin-top: 0; }
   .history b { font-weight: 600; }
-  @media (max-width: 480px) { .history { margin-bottom: -25px; font-size: 15px; } }
+  @media (max-width: 480px) { .history { margin-bottom: -24px; font-size: 15px; } }
   @media (max-width: 480px) {
     .card { padding: 16px 16px 24px; gap: 24px; }
     .cands { gap: 24px; }
