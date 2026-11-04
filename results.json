@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T06:45:58Z",
+ "updated": "2026-11-04T08:29:21Z",
  "rows": [
   {
    "order": 1,
@@ -93,7 +93,7 @@
    "incumbent": false,
    "votes": 2301444,
    "reporting": null,
-   "called": false,
+   "called": true,
    "note": ""
   },
   {
@@ -119,7 +119,7 @@
    "incumbent": false,
    "votes": 2299891,
    "reporting": null,
-   "called": false,
+   "called": true,
    "note": ""
   },
   {
