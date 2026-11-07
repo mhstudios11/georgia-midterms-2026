@@ -282,8 +282,9 @@
     const title = mk('div', 'card-title');
     title.append(mk('h3', null, s.badge ? s.office + ' ' + s.badge : s.office));
     const pillCls = s.winner ? 'called-' + s.winner_party : s.status === 'Counting' ? 'counting' : '';
-    const pill = mk('span', 'pill ' + pillCls, s.winner ? 'Called: ' + s.winner : s.status);
-    pill.title = pill.textContent;
+    // A called race shows just "Called" in the winner's party color; hovering names the winner.
+    const pill = mk('span', 'pill ' + pillCls, s.winner ? 'Called' : s.status);
+    pill.title = s.winner ? 'Called for ' + s.winner : s.status;
     title.append(pill);
     head.append(title, mk('div', 'meta', 'Incumbent: ' + s.incumbent));
     card.append(head);
