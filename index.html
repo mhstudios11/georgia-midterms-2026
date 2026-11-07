@@ -96,7 +96,10 @@
   .card-title { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
   .card-title h3 { margin: 0; font-size: 18px; font-weight: 600; min-width: 0; }
   .top .card-title h3 { font-size: 20px; }
-  .pill { border: 1px solid var(--line); border-radius: 16px; padding: 4px 10px; color: var(--muted); font-size: 12px; white-space: nowrap; }
+  /* The pill gives up space before the title does: it shrinks first and ends in "..." when it runs out of room. */
+  .card-title h3 { flex: 0 0 auto; max-width: calc(100% - 4.5em - 8px); }
+  .pill { flex: 0 1 auto; min-width: 4.5em; overflow: hidden; text-overflow: ellipsis;
+    border: 1px solid var(--line); border-radius: 16px; padding: 4px 10px; color: var(--muted); font-size: 12px; white-space: nowrap; }
   .pill.counting { color: var(--warn); border-color: currentColor; }
   .pill.called-D { color: #fff; background: var(--dem); border-color: var(--dem); }
   .pill.called-R { color: #fff; background: var(--rep); border-color: var(--rep); }
@@ -279,7 +282,9 @@
     const title = mk('div', 'card-title');
     title.append(mk('h3', null, s.badge ? s.office + ' ' + s.badge : s.office));
     const pillCls = s.winner ? 'called-' + s.winner_party : s.status === 'Counting' ? 'counting' : '';
-    title.append(mk('span', 'pill ' + pillCls, s.winner ? 'Called: ' + s.winner : s.status));
+    const pill = mk('span', 'pill ' + pillCls, s.winner ? 'Called: ' + s.winner : s.status);
+    pill.title = pill.textContent;
+    title.append(pill);
     head.append(title, mk('div', 'meta', 'Incumbent: ' + s.incumbent));
     card.append(head);
     const list = mk('div', 'cands');
